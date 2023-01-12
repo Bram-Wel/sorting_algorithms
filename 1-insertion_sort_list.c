@@ -10,10 +10,12 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *head, *node, *temp;
 
-	if (!list || !head || !head->next)
+	if (!list || !list)
 		return;
 
-	*head = *list;
+	head = *list;
+	if (!head->next)
+		return;
 	while (head->next)
 	{
 		temp = head;
