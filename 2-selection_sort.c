@@ -2,26 +2,22 @@
 
 void selection_sort(int *array, size_t size)
 {
-	int n;
-	size_t i, j, k;
+	unsigned int i, j, n, m;
 
 	for (i = 0; i < size - 1; i++)
 	{
-		n = *(array + i);
-		for (j = i; j < size; j++)
+		n = i;
+		for (j = i + 1; j < size; j++)
 		{
-			/* printf("%lu", j);*/
-			if (*(array + j) < n)
-			{
-				n = *(array + j);
-				k = j;
-			}
-			/*printf("=>%d; ", n);*/
+			if (array[j] < array[n])
+				n = j;
+		}
+		if (n != i)
+		{
+			m = array[n];
+			array[n] = array[i];
+			array[i] = m;
+			print_array(array, size);
 		}	
-		/*printf("\n");*/
-		*(array + k) = *(array + i);
-		*(array + i) = n;
-		/*printf("n:=> %d\n", n);*/
-		print_array(array, size);
 	}
 }
